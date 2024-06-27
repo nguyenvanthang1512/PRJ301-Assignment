@@ -9,5 +9,14 @@ package model;
  * @author thangPC
  */
 public class Semester {
+    private int id;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

@@ -13,6 +13,8 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import model.Account;
 
 /**
  *
@@ -51,7 +53,19 @@ public class LoginController extends HttpServlet {
         response.addCookie(cpass);
         response.addCookie(crem);
         
-        LoginDBContext dal = new LoginController();
+        LoginDBContext dal = new LoginDBContext();
+        Account account = dal.LoginDBContext(username, password);
+        
+        if(account == null){
+            request.setAttribute("mess", "Wrong User or Password");
+            request.getRequestDispatcher("../Login.jsp").forward(request, response);
+        } else {
+            HttpSession session = request.getSession();
+            session.setAttribute("acc", account);
+            session.setMaxInactiveInterval(0);
+            response.sendRedirect("home");
+        }
+        
         
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */

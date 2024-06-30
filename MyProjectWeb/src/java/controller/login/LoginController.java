@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
         
         if(account == null){
             request.setAttribute("mess", "Wrong User or Password");
-            request.getRequestDispatcher("../Login.jsp").forward(request, response);
+            request.getRequestDispatcher("../font/login.jsp").forward(request, response);
         } else {
             HttpSession session = request.getSession();
             session.setAttribute("acc", account);

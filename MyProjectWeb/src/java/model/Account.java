@@ -9,6 +9,9 @@ package model;
  * @author thangPC
  */
 public class Account {
+
+    public Account(int aInt, String string, String string1, int aInt1, int aInt2, int aInt3) {
+    }
     private int id;
     private String user;
     private String pass;

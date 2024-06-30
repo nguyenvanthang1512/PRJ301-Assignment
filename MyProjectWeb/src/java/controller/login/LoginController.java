@@ -5,7 +5,7 @@
 
 package controller.login;
 
-import dal.LoginDBContext;
+import dal.LoginDAL;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -53,8 +53,8 @@ public class LoginController extends HttpServlet {
         response.addCookie(cpass);
         response.addCookie(crem);
         
-        LoginDBContext dal = new LoginDBContext();
-        Account account = dal.LoginDBContext(username, password);
+        LoginDAL dal = new LoginDAL();
+        Account account = dal.LoginDAL(username, password);
         
         if(account == null){
             request.setAttribute("mess", "Wrong User or Password");

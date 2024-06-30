@@ -24,11 +24,12 @@ public class LoginDAL extends DBContext {
             st.setString(2, sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                return new Account(rs.getInt("uid"),
+                return new Account(rs.getInt("accid"),
                         rs.getString("user"),
                         rs.getString("pass"), 
                         rs.getInt("isStu"),
-                        rs.getInt("isLet"), rs.getInt("isAdmin"));
+                        rs.getInt("isLet"), 
+                        rs.getInt("isAdmin"));
             }
         } catch (SQLException e) {
             System.out.println(e);
@@ -37,7 +38,7 @@ public class LoginDAL extends DBContext {
     }
     public static void main(String[] args) {
         LoginDAL dal = new LoginDAL();
-        Account list = dal.LoginDAL("bin1512", "123");
+        Account list = dal.LoginDAL("sa", "123");
         System.out.println(list);
     }
 

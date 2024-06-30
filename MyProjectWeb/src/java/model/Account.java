@@ -10,7 +10,7 @@ package model;
  */
 public class Account {
 
-    public Account(int aInt, String string, String string1, int aInt1, int aInt2, int aInt3) {
+    public Account(int accid, String user, String pass, int isStu, int isLet, int isAdmin) {
     }
     private int id;
     private String user;

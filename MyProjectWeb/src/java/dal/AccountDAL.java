@@ -4,41 +4,39 @@
  */
 package dal;
 
+import java.util.ArrayList;
+import java.util.List;
+import model.Account;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import model.Account;
 
 /**
  *
  * @author thangPC
  */
-public class LoginDAL extends DBContext {
-
-    public Account LoginDAL(String user, String pass) {
-        String sql = "Select * from Account where [user] = ? and [pass] = ?";
+public class AccountDAL extends DBContext {
+    
+    public List<Account> getAllAccount(){
+        List<Account> list = new ArrayList<>();
+        String sql = "Select * from Account";
         try {
             PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, sql);
-            st.setString(2, sql);
             ResultSet rs = st.executeQuery();
             while (rs.next()) {
-                return new Account(rs.getInt("uid"),
+                Account p = new Account(rs.getInt("uid"),
                         rs.getString("user"),
-                        rs.getString("pass"), 
+                        rs.getString("pass"),
                         rs.getInt("isStu"),
-                        rs.getInt("isLet"), rs.getInt("isAdmin"));
+                        rs.getInt("isLet"),
+                        rs.getInt("isAdmin"));
+
+                list.add(p);
             }
-        } catch (SQLException e) {
+        } catch(SQLException e){
             System.out.println(e);
         }
-        return null;
-    }
-    public static void main(String[] args) {
-        LoginDAL dal = new LoginDAL();
-        Account list = dal.LoginDAL("bin1512", "123");
-        System.out.println(list);
+        return list;
     }
 
     @Override
@@ -65,4 +63,6 @@ public class LoginDAL extends DBContext {
     public void delete(Object model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
+    
 }

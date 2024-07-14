@@ -4,66 +4,69 @@
  */
 package dal;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
-import model.Account;
+import model.User;
+import java.sql.*;
+import java.sql.PreparedStatement;
+import org.apache.tomcat.dbcp.dbcp2.SQLExceptionList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author thangPC
  */
-public class LoginDAL extends DBContext {
+public class UserDBContext extends DBContext<User> {
 
-    public Account LoginDAL(String user, String pass) {
-        String sql = "Select * from Account where [user] = ? and [pass] = ?";
+    public User get(String username, String password) {
+        PreparedStatement stm = null;
+        User user = null;
         try {
-            PreparedStatement st = connection.prepareStatement(sql);
-            st.setString(1, sql);
-            st.setString(2, sql);
-            ResultSet rs = st.executeQuery();
-            while (rs.next()) {
-                return new Account(rs.getInt("accid"),
-                        rs.getString("user"),
-                        rs.getString("pass"), 
-                        rs.getInt("isStu"),
-                        rs.getInt("isLet"), 
-                        rs.getInt("isAdmin"));
+            String sql = "select * from [user] \n"
+                    + "	where [username] = '?' and [password] = '?' and [role] = '?'";
+            stm = connection.prepareStatement(sql);
+            stm.setString(1, username);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+
+        } catch (SQLException ex) {
+
+        } finally {
+            try {
+                stm.close();
+                connection.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(UserDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (SQLException e) {
-            System.out.println(e);
+
         }
-        return null;
-    }
-    public static void main(String[] args) {
-        LoginDAL dal = new LoginDAL();
-        Account list = dal.LoginDAL("sa", "123");
-        System.out.println(list);
+        return user;
+
     }
 
     @Override
-    public ArrayList all() {
+    public ArrayList<User> all() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public Object get(int id) {
+    public User get(int id) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void insert(Object model) {
+    public void insert(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void update(Object model) {
+    public void update(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public void delete(Object model) {
+    public void delete(User model) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }

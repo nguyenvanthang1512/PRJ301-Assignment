@@ -55,42 +55,52 @@
         </style>   
     </head>
     <body>
-        <div id = "barner">
-            <img src = "" alt = "Barner Image" class = "image-fluid">
-            <div id="logreg-forms">
-                <form class="form-signin" action="login" method="post">
-                    <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Sign in</h1>
+    <div id="banner">
+        <!-- Your banner content and styling here -->
+        <img src="https://tostemvietnam.com/wp-content/uploads/2021/10/FPT-University-2.jpg" alt="Banner Image" class="img-fluid">
+        
+        <div id="slogan">
+            <p>My Fap</p>
+        </div>
+        
+        <!-- Login form overlay -->
+        <div id="logreg-forms">
+            <form class="form-signin" action="login" method="post">
+                <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+                
+                <p class="text-danger">${mess}</p>
+                
+                <input name="user"  type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
+                <input name="pass"  type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 
-                    <p class="text-danger">${mess}</p>
+                <div class="form-group form-check">
+                    <input name="remember" value="ON" type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                </div>
 
-                    <input name="user" type="text" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="">
-                    <input name="pass" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+                <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
+                <hr>
+                
+            </form>
 
-                    <div class="form-group form-check">
-                        <input name="remember" value="ON" type="checkbox" class="form-check-input" id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
-                    </div>
-
-                    <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-                </form>
-            </div>
+            
+            <br>
 
         </div>
-
+    </div>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
         <script>
             function toggleResetPswd(e) {
                 e.preventDefault();
-                $('#logreg-forms .form-signin').toggle()
-                $('#logreg-forms .form-reset').toggle()
+                $('#logreg-forms .form-signin').toggle() // display:block or none
+                $('#logreg-forms .form-reset').toggle() // display:block or none
             }
 
             function toggleSignUp(e) {
                 e.preventDefault();
-                $('#logreg-forms .form-signin').toggle(); 
-                $('#logreg-forms .form-signup').toggle(); 
+                $('#logreg-forms .form-signin').toggle(); // display:block or none
+                $('#logreg-forms .form-signup').toggle(); // display:block or none
             }
 
             $(() => {
@@ -101,5 +111,5 @@
                 $('#logreg-forms #cancel_signup').click(toggleSignUp);
             })
         </script>
-    </body>
+</body>
 </html>

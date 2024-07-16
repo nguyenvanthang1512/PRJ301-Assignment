@@ -14,7 +14,7 @@ public class Lecturer {
 
     private int id;
     private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
+   
 
     public int getId() {
         return id;
@@ -32,11 +32,13 @@ public class Lecturer {
         this.name = name;
     }
 
-    public ArrayList<Course> getCourses() {
-        return courses;
+    public Lecturer() {
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
+    public Lecturer(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
+
+    
 }

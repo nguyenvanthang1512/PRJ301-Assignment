@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import model.Grade;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -71,6 +73,30 @@ public class GradeDBContext extends DBContext<Grade> {
             }
         }
         return grades;
+    }
+    
+    public Map<Integer, Float> getAverageGradesByCourse(){
+        Map<Integer, Float> avgGrades = new HashMap<>();
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            String sql = "SELECT cid, AVG(grade) as avg_grade FROM grades GROUP BY cid";
+            stm = connection.prepareStatement(sql);
+            rs = stm.executeQuery();
+            while (rs.next()){
+                avgGrades.put(rs.getInt("cid"), rs.getFloat("avg_grade"));
+            }
+        } catch (Exception e) {
+        } finally {
+            try {
+            if (rs != null) rs.close();
+            if (stm != null) stm.close();
+            if (connection != null) connection.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(GradeDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        return avgGrades;
     }
 
     @Override

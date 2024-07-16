@@ -26,7 +26,7 @@ public class StatisticController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         GradeDBContext gradeDB = new GradeDBContext();
-        Map<Integer, Float> avgGrades = gradeDB.getAverageGradeByCourse();
+        Map<Integer, Float> avgGrades = gradeDB.getAverageGradesByCourse();
         request.setAttribute("avgGrades", avgGrades);
         request.getRequestDispatcher("font/cal/statistic.jsp").forward(request, response);
     } 

@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 
 /**
@@ -15,9 +15,27 @@ public class Exam {
     private int id;
     private Date date;
     private int duration;
-    private Assessment assessment;
-    private ArrayList<Grade> grades = new ArrayList<>();
+    private int aid;
 
+    public Exam() {
+    }
+
+    public Exam(int id, Date date, int duration, int aid) {
+        this.id = id;
+        this.date = date;
+        this.duration = duration;
+        this.aid = aid;
+    }
+
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -42,20 +60,6 @@ public class Exam {
         this.duration = duration;
     }
 
-    public Assessment getAssessment() {
-        return assessment;
-    }
-
-    public void setAssessment(Assessment assessment) {
-        this.assessment = assessment;
-    }
-
-    public ArrayList<Grade> getGrades() {
-        return grades;
-    }
-
-    public void setGrades(ArrayList<Grade> grades) {
-        this.grades = grades;
-    }
+   
     
 }

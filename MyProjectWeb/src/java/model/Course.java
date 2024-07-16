@@ -4,66 +4,68 @@
  */
 package model;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author thangPC
  */
 public class Course {
-    private int id;
-    private Lecturer lecturer;
-    private String name;
-    private Semester semester;
-    private Subject subject;
-    private ArrayList<Student> students = new ArrayList<>();
 
-    public int getId() {
+    private int cid;
+    private int cname;
+    private int id;
+    private int subid;
+    private int semid;
+
+    public Course(int cid, int cname, int id, int subid, int semid) {
+        this.cid = cid;
+
+        this.cname = cname;
+        this.id = id;
+        this.subid = subid;
+        this.semid = semid;
+    }
+
+    public Course() {
+    }
+
+    public int getCid() {
+        return cid;
+    }
+
+    public void setCid(int cid) {
+        this.cid = cid;
+    }
+
+    public int getCname() {
+        return cname;
+    }
+
+    public void setCname(int cname) {
+        this.cname = cname;
+    }
+
+    public int getLid() {
         return id;
     }
 
-    public Lecturer getLecturer() {
-        return lecturer;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public Semester getSemester() {
-        return semester;
-    }
-
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public ArrayList<Student> getStudents() {
-        return students;
-    }
-
-    public void setId(int id) {
+    public void setLid(int id) {
         this.id = id;
     }
 
-    public void setLecturer(Lecturer lecturer) {
-        this.lecturer = lecturer;
+    public int getSubid() {
+        return subid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setSubid(int subid) {
+        this.subid = subid;
     }
 
-    public void setSemester(Semester semester) {
-        this.semester = semester;
+    public int getSemid() {
+        return semid;
     }
 
-    public void setSubject(Subject subject) {
-        this.subject = subject;
+    public void setSemid(int semid) {
+        this.semid = semid;
     }
 
-    public void setStudents(ArrayList<Student> students) {
-        this.students = students;
-    }
-    
 }

@@ -9,9 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Transcript</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Transcript</h1>
+    <table border="1">
+        <tr>
+            <th>Course</th>
+            <th>Grade</th>
+        </tr>
+        <c:forEach var="grade" items="${grades}">
+            <tr>
+                <td>${grade.courseId}</td>
+                <td>${grade.grade}</td>
+            </tr>
+        </c:forEach>
+    </table>
     </body>
 </html>

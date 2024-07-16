@@ -4,7 +4,7 @@
  */
 package model;
 
-import java.util.ArrayList;
+
 
 /**
  *
@@ -13,8 +13,15 @@ import java.util.ArrayList;
 public class Student {
     private int id;
     private String name;
-    private ArrayList<Course> courses = new ArrayList<>();
-    private ArrayList<Grade> grades = new ArrayList<>();
+
+    public Student() {
+    }
+
+    public Student(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+    
 
     public int getId() {
         return id;
@@ -32,20 +39,6 @@ public class Student {
         this.name = name;
     }
 
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
-    }
-
-    public void setGrades(ArrayList<Grade> grades) {
-        this.grades = grades;
-    }
-
-    public ArrayList<Course> getCourses() {
-        return courses;
-    }
-
-    public ArrayList<Grade> getGrades() {
-        return grades;
-    }
+    
     
 }

@@ -9,18 +9,28 @@ package model;
  * @author thangPC
  */
 public class User {
-    private int id;
+
+    private int uID;
     private String username;
     private String password;
     private String role;
-    private String displayname;
 
-    public int getId() {
-        return id;
+    public User() {
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public User(int uID, String username, String password, String role) {
+        this.uID = uID;
+        this.username = username;
+        this.password = password;
+        this.role = role;
+    }
+
+    public int getId() {
+        return uID;
+    }
+
+    public void setId(int uID) {
+        this.uID = uID;
     }
 
     public String getUsername() {
@@ -47,11 +57,4 @@ public class User {
         this.role = role;
     }
 
-    public String getDisplayname() {
-        return displayname;
-    }
-
-    public void setDisplayname(String displayname) {
-        this.displayname = displayname;
-    }
 }

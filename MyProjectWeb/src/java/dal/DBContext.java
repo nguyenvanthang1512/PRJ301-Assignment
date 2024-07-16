@@ -21,7 +21,7 @@ public abstract class DBContext<T> {
         try {
             String user = "sa";
             String password = "123";
-            String url = "jdbc:sqlserver://localhost:1433;databaseName=PRJ_SU24";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName=PRJ301";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(url, user, password);
         } catch (ClassNotFoundException ex) {
@@ -40,4 +40,7 @@ public abstract class DBContext<T> {
     public abstract void update(T model);
 
     public abstract void delete(T model);
+    
+    
+    
 }

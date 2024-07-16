@@ -78,6 +78,8 @@ public class LoginController extends HttpServlet {
         response.addCookie(cuser);
         response.addCookie(cpass);
         response.addCookie(crem);
+        
+        response.sendRedirect("welcome.jsp"); // Redirect to a welcome page or home page
 
         UserDBContext db = new UserDBContext();
         User user = db.get(username, password);
@@ -86,6 +88,7 @@ public class LoginController extends HttpServlet {
             response.getWriter().println("hello hacker lod!");
         } else {
             response.getWriter().println("login failed!");
+            request.getRequestDispatcher("font/auth/login.jsp").forward(request, response);
         }
     }
 

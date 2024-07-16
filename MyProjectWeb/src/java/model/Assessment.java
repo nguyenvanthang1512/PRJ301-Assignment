@@ -12,8 +12,27 @@ public class Assessment {
     private int id;
     private String name;
     private float weight;
-    private Subject subject;
+    private int subid;
 
+    public Assessment() {
+    }
+
+    public Assessment(int id, String name, float weight, int subid) {
+        this.id = id;
+        this.name = name;
+        this.weight = weight;
+        this.subid = subid;
+    }
+
+    public int getSubid() {
+        return subid;
+    }
+
+    public void setSubid(int subid) {
+        this.subid = subid;
+    }
+    
+    
     public int getId() {
         return id;
     }
@@ -38,12 +57,6 @@ public class Assessment {
         this.weight = weight;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
+    
     
 }

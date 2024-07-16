@@ -26,6 +26,7 @@ public class UserDBContext extends DBContext<User> {
                 user = new User();
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
+                user.setRole(rs.getString("role"));
               
                
             }
